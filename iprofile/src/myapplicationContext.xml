@@ -1,0 +1,64 @@
+	<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="
+	   http://www.springframework.org/schema/beans     
+	   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	   http://www.springframework.org/schema/context 
+	   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+		<context:component-scan base-package="com.hexaware.iprofile" />
+		<context:component-scan base-package="com.hexaware.iprofile.dao" />
+	
+		<bean id="dataSource"
+			class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="org.h2.Driver"></property>
+			<property name="url"
+				value="jdbc:h2:file:D:/July13WS/iProfile/database/test"></property>
+			<property name="username" value="prasad"></property>
+			<property name="password" value="prasad"></property>
+		</bean>
+	
+		<bean id="mysessionFactory"
+			class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+			<property name="dataSource">
+				<ref bean="dataSource" />
+			</property>
+	
+			<property name="mappingResources">
+				<list>
+	
+					<value>technology.hbm.xml</value>
+					<value>contact.hbm.xml</value>
+					<value>company.hbm.xml</value>
+					<value>address.hbm.xml</value>
+	
+				</list>
+			</property>
+	
+			<property name="hibernateProperties">
+				<props>
+					<prop key="hibernate.dialect"> org.hibernate.dialect.H2Dialect</prop>
+					<prop key="hibernate.hbm2ddl.auto">create</prop>
+	
+				</props>
+			</property>
+		</bean>
+	
+		<bean id="technologyBean" class="com.hexaware.iprofile.dao.TechnologyDao">
+			<property name="sessionFactory" ref="mysessionFactory"></property>
+		</bean>
+	
+		<bean id="contactBean" class="com.hexaware.iprofile.dao.ContactDao">
+			<property name="sessionFactory" ref="mysessionFactory"></property>
+		</bean>
+	
+		<bean id="companyBean" class="com.hexaware.iprofile.dao.CompanyDao">
+			<property name="sessionFactory" ref="mysessionFactory"></property>
+		</bean>
+	
+		<bean id="addressBean" class="com.hexaware.iprofile.dao.AddressDao">
+			<property name="sessionFactory" ref="mysessionFactory"></property>
+		</bean>
+	
+	</beans>

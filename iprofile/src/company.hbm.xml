@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.hexaware.iprofile.Company" table="company">
+  <id name="company_id">
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="name"/>
+  <property generated="never" lazy="false" name="url"/>
+  <property generated="never" lazy="false" name="revenue_range"/>
+  <property generated="never" lazy="false" name="employee_range"/>
+  <property generated="never" lazy="false" name="industry"/>
+  <property generated="never" lazy="false" name="it_contacts_count"/>
+  <property generated="never" lazy="false" name="twitter_url"/>
+  <property generated="never" lazy="false" name="li_url"/>
+  <property generated="never" lazy="false" name="stock_ticker"/>
+  <property generated="never" lazy="false" name="ownership_type"/>
+  <property generated="never" lazy="false" name="phone"/>
+  <property generated="never" lazy="false" name="sic"/>
+  <property generated="never" lazy="false" name="duns"/>
+  <!--<property generated="never" lazy="false" name="description"/>-->
+  <property generated="never" lazy="false" name="last_updated"/>
+  <property generated="never" lazy="false" name="it_budget"/>
+  <property generated="never" lazy="false" name="software_budget"/>
+  <property generated="never" lazy="false" name="hardware_budget"/>
+  <property generated="never" lazy="false" name="service_budget"/>
+  <property generated="never" lazy="false" name="communication_budget"/>
+  <property generated="never" lazy="false" name="storage_budget"/>
+  <property generated="never" lazy="false" name="miscellaneous_budget"/>
+  
+  <many-to-one class="com.hexaware.iprofile.Address" fetch="select" name="address">
+   <column name="address_id" not-null="true"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>

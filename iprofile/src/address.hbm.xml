@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.hexaware.iprofile.Address" table="address">
+  <id name="address_id">
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="address1"/>
+  <property generated="never" lazy="false" name="address2"/>
+  <property generated="never" lazy="false" name="city"/>
+  <property generated="never" lazy="false" name="state"/>
+  <property generated="never" lazy="false" name="zip"/>
+  <property generated="never" lazy="false" name="country"/>
+  <property generated="never" lazy="false" name="country_code"/>
+  <set fetch="select" inverse="true" lazy="true" name="companies"
+   sort="unsorted" table="company">
+   <key>
+    <column name="address_id" not-null="true"/>
+   </key>
+   <one-to-many class="com.hexaware.iprofile.Company"/>
+  </set>
+ </class>
+</hibernate-mapping>

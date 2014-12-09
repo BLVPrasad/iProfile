@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+<hibernate-mapping>  
+<class name="com.hexaware.iprofile.Technology" table="technology">  
+          <id name="tech_id">  
+          <generator class="assigned"></generator>  
+          </id>  
+          
+          <property name="catagory"></property>  
+          <property name="sub_catagory"></property>
+          <property name="vendor"></property>  
+          <property name="product"></property>  
+                   
+          <set name="companies" table="company"
+                inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tech_id" not-null="false" />
+            </key>
+            <one-to-many class="com.hexaware.iprofile.Company" />
+          </set>
+          
+</class>  
+            
+</hibernate-mapping> 

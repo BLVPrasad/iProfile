@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+<hibernate-mapping>  
+<class name="com.hexaware.iprofile.Blv" table="BLV">  
+          <id name="name">  
+          <generator class="assigned"></generator>  
+          </id>  
+          
+          <property name="fare"></property>  
+         <!--  
+          
+           <set name="companies" table="company"
+                inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="address_id" not-null="true" />
+            </key>
+            <one-to-many class="com.hexaware.iprofile.Company" />
+        </set>
+          
+--></class>  
+            
+</hibernate-mapping> 

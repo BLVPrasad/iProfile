@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+<hibernate-mapping>  
+<class name="com.hexaware.iprofile.Contact" table="contact">  
+          <id name="contact_id">  
+          <generator class="assigned"></generator>  
+          </id>  
+          
+          <property name="first_name"></property>  
+          <property name="middle_name"></property>
+          <property name="last_name"></property>  
+          <property name="title"></property>  
+          <property name="rank"></property>  
+          <property name="department"></property>
+           <property name="phone"></property>  
+          <property name="email"></property>  
+          <property name="reports_contactid"></property>    
+          
+           <set name="companies" table="company"
+                inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="contact_id" not-null="false" />
+            </key>
+            <one-to-many class="com.hexaware.iprofile.Company" />
+        </set>
+          
+</class>  
+            
+</hibernate-mapping> 
